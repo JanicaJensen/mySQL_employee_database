@@ -1,13 +1,23 @@
+/* Drops the database */
+
 DROP DATABASE IF EXISTS employeesdb;
+/*RE-creates the databasee */
 CREATE DATABASE employeesdb;
+/* Tells the app to use this database */
 USE employeesdb;
 
+/* Creates the table for DEPARTMENTS */
 CREATE TABLE department(
+    /* ID is required and will auto increment when new are added */
     id INT NOT NULL AUTO_INCREMENT,
+    /* Must be 100 cahracters or less and not null */
     name VARCHAR(100) NOT NULL,
+    /* States to refer to the id property above as the primary key */
     PRIMARY KEY (id)
 );
 
+
+/* pretty much the same as above with an added coupld of columns */
     CREATE TABLE role(
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(100) NOT NULL,
@@ -17,6 +27,7 @@ CREATE TABLE department(
     );
 
 
+/*about the same as above but with more columns*/
 CREATE TABLE employee (
   id INT NOT NULL AUTO_INCREMENT,
   first_name VARCHAR(45) NULL,
