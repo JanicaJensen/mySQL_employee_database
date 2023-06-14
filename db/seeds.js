@@ -1,36 +1,16 @@
-INSERT INTO department(name)
-VALUES("Foreign Language");
-INSERT INTO department(name)
-VALUES("English");
-INSERT INTO department(name)
-VALUES("Math");
-INSERT INTO department(name)
-VALUES("Science");
+INSERT INTO department(name) VALUES('Faculty');
+INSERT INTO department(name) VALUES('Staff');
+INSERT INTO department(name) VALUES('Admin');
+INSERT INTO department(name) VALUES('Paraeducator');
 
-INSERT INTO role(title, salary, department_id)
-VALUES("Teacher", 56000, 1);
-INSERT INTO role(title, salary, department_id)
-VALUES("Team Lead", 60000, 1);
-INSERT INTO role(title, salary, department_id)
-VALUES("Admin", 70000, 2);
-INSERT INTO role(title, salary, department_id)
-VALUES("Staff", 40000, 3);
-INSERT INTO role(title, salary, department_id)
-VALUES("Aids", 30000, 4);
+INSERT INTO role(title, salary, department_id) VALUES
+    ('Teacher', 50000, 1),
+    ('Team Lead', 55000, 2),
+    ('Admin', 80000, 3),
+    ('Staff', 50000, 4);
 
-INSERT INTO employee(first_name, last_name, role_id, manager_id)
-VALUES("Becca", "Wassleman", 1, 3);
-INSERT INTO employee(first_name, last_name, role_id, manager_id)
-VALUES("Chandra", "Loughlin", 2, 1);
-INSERT INTO employee(first_name, last_name, role_id, manager_id)
-VALUES("Chanderie", "Palin", 3, null);
-INSERT INTO employee(first_name, last_name, role_id, manager_id)
-VALUES("Persephone", "Reppling", 4, 3);
-INSERT INTO employee(first_name, last_name, role_id, manager_id)
-VALUES("Rushton", "Nuñez", 5, null);
-INSERT INTO employee(first_name, last_name, role_id, manager_id)
-VALUES("Winnie", "Poplar", 2, null);
-INSERT INTO employee(first_name, last_name, role_id, manager_id)
-VALUES("Margaret", "Quailman", 4, 7);
-INSERT INTO employee(first_name, last_name, role_id, manager_id)
-VALUES("Penelope", "Pig", 1, 2);
+  INSERT INTO employee(first_name, last_name, role_id, manager_id) VALUES
+    ('William', 'Tovar', 1, 2),
+    ('Jillian', 'Holmieres', 1, 3),
+    ('Sofia', 'Quenard', 2, 3),
+    ('Luis', 'Gil', 3, 3);
