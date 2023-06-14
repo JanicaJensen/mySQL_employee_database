@@ -7,28 +7,28 @@ CREATE DATABASE employeesdb;
 USE employeesdb;
 
 /* Creates the table for DEPARTMENTS */
-CREATE TABLE department(
+CREATE TABLE departments(
     /* ID is required and will auto increment when new are added */
     id INT NOT NULL AUTO_INCREMENT,
     /* Must be 100 cahracters or less and not null */
-    name VARCHAR(100) NOT NULL,
+    deptName VARCHAR(100) NOT NULL,
     /* States to refer to the id property above as the primary key */
     PRIMARY KEY (id)
 );
 
 
 /* pretty much the same as above with an added coupld of columns */
-    CREATE TABLE role(
+    CREATE TABLE roles(
     id INT NOT NULL AUTO_INCREMENT,
     title VARCHAR(100) NOT NULL,
     salary  DECIMAL(10,2) NOT NULL,
     department_id INT NOT NULL,
-    PRIMARY KEY (id),
+    PRIMARY KEY (id)
     );
 
 
 /*about the same as above but with more columns*/
-CREATE TABLE employee (
+CREATE TABLE employees(
   id INT NOT NULL AUTO_INCREMENT,
   first_name VARCHAR(45) NULL,
   last_name VARCHAR(45) NULL,

@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/JanicaJensen/mySQL_employee_database/issues"
   },
-  "homepage": "https://github.com/JanicaJensen/mySQL_employee_database#readme"
+  "homepage": "https://github.com/JanicaJensen/mySQL_employee_database#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "mysql2": "^3.3.5"
+  }
 }

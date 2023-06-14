@@ -1,44 +1,33 @@
 const mysql = require('mysql');
 const inquirer = require('inquirer');
-const dotenv = require('dotenv').config();
-const consoleTable = require("console.table");
+const db = require('./db/connection');
 
 
-const connection = mysql.createConnection(
-    {
-        host: 'localhost',
-
-        port: 3306,
-
-        user: 'root',
-
-        password: 'hermione',
-        database: 'employeesdb'
 
 
-    }
-);
+db.connect(err => {
+    if (err) throw err;
+    console.log('Database connected.');
+    employee_tracker();
+});
 
-// connection.connect(function (err) {
-//     if (err) throw err;
-//     console.log('connected as id ' + connection.threadId);
-
-//     // I saw someone else do this and I thought it was cool.
-//     console.log(`
-// #                    ###           #######                             ### 
-// #       ###### ##### ###  ####        #    #####    ##    ####  #    # ### 
-// #       #        #    #  #            #    #    #  #  #  #    # #   #  ### 
-// #       #####    #   #    ####        #    #    # #    # #      ####    #  
-// #       #        #            #       #    #####  ###### #      #  #       
-// #       #        #       #    #       #    #   #  #    # #    # #   #  ### 
-// ####### ######   #        ####        #    #    # #    #  ####  #    # ### 
-                                                                                                                                                                                
-                                                                                                                            
-//     `);
-
-//     prompt();
-
-// });
+var employee_tracker = function () {
+    inquirer.prompt([{
+        type: 'list',
+        name: 'prompt',
+        message: 'What would you like to do?',
+        choices: ['View all employees', 'View all employees by department', 'View all employees by manager', 'Add employee', 'Remove employee', 'Update employee role', 'Update employee manager', 'View all roles', 'Add role', 'Remove role', 'View all departments', 'Add department', 'Remove department', 'Quit']
+    }]
+    )
+    .then((answers) => {
+        if (answers.prompt === 'View all departments'){
+            if(err) throw err;
+            console.lof('Viewing all departments');
+            console.table(result);
+            employee_tracker()
+        }
+    })
+}
 
 
 // function prompt() {
