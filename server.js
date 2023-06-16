@@ -4,10 +4,11 @@ const db = require('./db/connection');
 
 
 
-
+// the function that starts the application and connects to the database
 db.connect(err => {
     if (err) throw err;
     console.log('Database connected.');
+    // cool ASCII art (I saw other people doing this and was like :0 I must do it too.)
     console.log(`
     ___      _______  _______  __   _______    _______  ______    _______  _______  ___   _  __  
     |   |    |       ||       ||  | |       |  |       ||    _ |  |   _   ||       ||   | | ||  | 
@@ -21,12 +22,14 @@ db.connect(err => {
 });
 
 var employee_tracker = function () {
+    // Inquirer begins to ask questions
     inquirer.prompt([{
         type: 'list',
         name: 'prompt',
         message: 'What would you like to do?',
         choices: ['View all departments', 'View all roles', 'View all employees', 'Add a department', 'Add a role', 'Add an employee', 'Update employee roles', 'Log Out']
     }])
+    // the options for inquirer to show
     .then((answers) => {
         if (answers.prompt === 'View all departments'){
             db.query(`SELECT* FROM departments`,(err, result) => {
@@ -49,6 +52,7 @@ var employee_tracker = function () {
             console.table(result);
             employee_tracker();
             });
+            // specifically asks for input for the user choice of add a department
         } else if (answers.prompt === 'Add a department'){
             inquirer.prompt([{
                 type: 'input',
@@ -61,6 +65,7 @@ var employee_tracker = function () {
                         return false;
                     }
                 }
+                // inserts user input into departments
             }]) .then ((answers)=> {
                 db.query(`INSERT INTO departments (deptName) VALUES (?)`, [answers.department], (err, result)=> {
                     if (err) throw err;
@@ -68,6 +73,7 @@ var employee_tracker = function () {
                     employee_tracker();
                 });
           });
+          // if user chooses "add a role" they will be given an input prompt
         } else if (answers.prompt === 'Add a role'){
             db.query(`SELECT * FROM departments`, (err,result) => {
                 if (err) throw err;
@@ -110,6 +116,7 @@ var employee_tracker = function () {
                     return array;
                 }
             }
+            // inserts user input into roles
             ]).then ((answers) => {
                 for (var i=0; i < result.length; i++){ // should this be answers.department? 
                     if (result[i].name === answers.department){
@@ -125,6 +132,7 @@ var employee_tracker = function () {
                 }])
             })
             });
+            // if user chooses "add an employee" they will be given an input prompt
         } else if (answers.prompt === 'Add an employee'){
             db.query(`SELECT * FROM employees, roles`, (err,result) => {
                 if (err) throw err;
@@ -181,6 +189,7 @@ var employee_tracker = function () {
                     }
                 }
             }
+        // inserts user input into employees
             ]).then ((answers) => {
                 for (var i = 0; i < result.length; i++){
                     if (result[i].title === answers.role){
@@ -194,6 +203,7 @@ var employee_tracker = function () {
                 });
             })
             });
+            // if user chooses to update employees they will be given prompts
         } else if (answers.prompt === 'Update employee roles'){
             db.query(`SELECT * FROM employees, roles`, (err, result) => {
                 if (err) throw err;
@@ -224,6 +234,7 @@ var employee_tracker = function () {
                     return newArray;
                 }
             }
+            // user input is inserted to employees table
             ]).then ((answers) => {
                 for (var i = 0; i < result.length; i++){
                     if (result[i].first_name === answers.employee){
@@ -240,6 +251,8 @@ var employee_tracker = function () {
                 });
             })
             });
+
+            // ends the function
         }  else if (answers.prompt === 'Log Out') {
             db.end();
             console.log("All done!");

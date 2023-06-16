@@ -1,5 +1,7 @@
+/* Specifies to use the employeesdb database */
 USE employeesdb;
 
+/* Some seeds to insert into departments table using SQL query language */
 INSERT INTO departments (deptName) VALUES 
 ('Faculty'),
 ('Staff'),

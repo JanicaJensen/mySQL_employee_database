@@ -1,3 +1,4 @@
+// Purpose: Establishes connection to MySQL database
 const mysql = require('mysql2');
 
 const db = mysql.createConnection({
